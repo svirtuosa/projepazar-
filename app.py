@@ -324,11 +324,11 @@ else:
                 st.markdown(f"**{idx}.** {step}")
 
         if alternatives:
-    st.markdown("#### 🔁 Alternatif Öneriler")
-    for _, alt in alternatives:
-        alt_recipe = NEW_RECIPES.get(alt["name"])
-        if alt_recipe:
-            st.markdown(f"- **{alt['name']}** — {alt_recipe['time']}, {alt_recipe['cal']}")
+            st.markdown("#### 🔁 Alternatif Öneriler")
+            for _, alt in alternatives:
+                alt_recipe = NEW_RECIPES.get(alt["name"])
+                if alt_recipe:
+                    st.markdown(f"- **{alt['name']}** — {alt_recipe['time']}, {alt_recipe['cal']}")
             
         st.info(f"💡 **AI Şefin İpucu:** {recipe['tips']}")
 
