@@ -3,7 +3,7 @@ import base64
 import os
 import time
 
-st.set_page_config(page_title="🍽️ Şefin Mutfağı | Akıllı Yemek Önerici", layout="centered")
+st.set_page_config(page_title="🍽️ Akıllı Tabak | AI Destekli Yemek Öneri Sistemi", layout="centered")
 
 # -----------------------------
 # CSS & BACKGROUND
@@ -309,7 +309,7 @@ questions = [
 # ================================
 # 🖥️ ARAYÜZ (UI)
 # ================================
-st.title("👨‍🍳 Şefin Akıllı Mutfağı")
+st.title("🍽️ Akıllı Tabak Sistemi")
 
 if st.session_state.step < len(questions):
 
