@@ -312,6 +312,11 @@ questions = [
 st.title("👨‍🍳 Şefin Akıllı Mutfağı")
 
 if st.session_state.step < len(questions):
+
+    progress = st.session_state.step / len(questions)
+    st.progress(progress)
+    st.caption(f"Soru {st.session_state.step + 1} / {len(questions)}")
+
     q, typ, opts = questions[st.session_state.step]
     st.subheader(q)
     
