@@ -226,7 +226,8 @@ questions = [
 # ================================
 # 🖥️ ARAYÜZ (UI)
 # ================================
-st.title("👨‍🍳 Şefin Akıllı Mutfağı")
+st.title("🍽️ Akıllı Tabak ")
+st.markdown("### _Bugün ne pişirsem? Kararı birlikte verelim._")
 
 if st.session_state.step < len(questions):
     q, typ, opts = questions[st.session_state.step]
