@@ -431,15 +431,6 @@ else:
             )
         )
 
-        # Matematiksel/puanlama görünümü
-        st.markdown("#### 📊 Uygunluk Skoru")
-        s1, s2, s3, s4 = st.columns(4)
-        s1.metric("Beslenme", f"+{score_parts['Beslenme uyumu']}")
-        s2.metric("Süre", f"+{score_parts['Süre uyumu']}")
-        s3.metric("Öğün", f"+{score_parts['Öğün uyumu']}")
-        s4.metric("Yemek Türü", f"+{score_parts['Yemek türü uyumu']}")
-        st.markdown(f"### Toplam Skor: **{score_parts['Toplam']} / 10**")
-
         # Besin değeri analizi
         st.markdown("#### 🧪 Besin Değeri Analizi")
         n1, n2, n3, n4 = st.columns(4)
