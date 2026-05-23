@@ -9,7 +9,7 @@ st.set_page_config(page_title="🍽️ Şefin Mutfağı | Akıllı Yemek Öneric
 # CSS & BACKGROUND
 # -----------------------------
 def set_bg():
-    file_path = "bg.PNG"
+    file_path = "bg.png"
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             data = base64.b64encode(f.read()).decode()
@@ -284,12 +284,15 @@ else:
 
     if not valid_meals:
         # Eğer kullanıcının seçtiği kombinasyon imkansızsa (Örn: 15 dakikadan az + Et ağırlıklı)
-        # Sadece zamana ve öğüne uygun bir yemek verip durumu bildir
+        # Sadece zamana ve öğüne uygun bir yemek verip durumu bildir,
+        alternatives = []
         fallback_meals = [m for m in meals if (m["time"] == secilen_sure or secilen_sure == "30+ dk") and m["cat"] == secilen_ogun]
         best_match = fallback_meals[0] if fallback_meals else meals[0]
         st.warning("Tam bu spesifik kombinasyona uygun tarif bulamadım ama zamanına ve öğününe uygun şu alternatifi seçtim:")
+        
     else:
         best_match = valid_meals[0][1]
+        alternatives = valid_meals[1:3]
 
     recipe = NEW_RECIPES.get(best_match["name"])
 
@@ -297,6 +300,11 @@ else:
         st.markdown("---")
         st.success(f"### ✨ Senin İçin Seçimim: {best_match['name']}")
         st.caption(f"_{recipe['desc']}_")
+        st.info(
+    f"🍽️ **Neden bu yemek önerildi?**\n\n"
+    f"Bu yemek; seçtiğiniz öğün, süre ve beslenme tercihiyle uyumlu olduğu için önerildi. "
+    f"Ayrıca seçtiğiniz yemek türüyle eşleşen tarifler arasında en uygun seçenek olarak belirlendi."
+)
         
         c1, c2, c3 = st.columns(3)
         c1.metric("⏱️ Süre", recipe["time"])
@@ -314,7 +322,14 @@ else:
             st.markdown("#### 👨‍🍳 Hazırlanış")
             for idx, step in enumerate(recipe["steps"], 1): 
                 st.markdown(f"**{idx}.** {step}")
-        
+
+        if alternatives:
+    st.markdown("#### 🔁 Alternatif Öneriler")
+    for _, alt in alternatives:
+        alt_recipe = NEW_RECIPES.get(alt["name"])
+        if alt_recipe:
+            st.markdown(f"- **{alt['name']}** — {alt_recipe['time']}, {alt_recipe['cal']}")
+            
         st.info(f"💡 **AI Şefin İpucu:** {recipe['tips']}")
 
     st.markdown("---")
