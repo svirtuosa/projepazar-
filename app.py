@@ -124,6 +124,89 @@ NEW_RECIPES = {
     "Buzlu Matcha Latte": {"desc": "Japonya'dan gelen Matcha yeşil çayı ve soğuk sütün ferahlatıcı birleşimi.", "time": "5 dk", "cal": "110 kcal", "ing": ["1 tk matcha tozu", "1/2 su bardağı sıcak su", "1 su bardağı soğuk süt", "Buz küpleri"], "steps": ["Matchayı sıcak suyla köpürene kadar çırpın (bambu fırça veya mikserle).", "Bardağa buzları koyun, sütü ekleyin.", "En son matcha karışımını sütün üzerine dökün."], "tips": "Topaklanmaması için toz çayı önceden elemeniz önerilir."}
 }
 
+NUTRITION = {
+    "Menemen": {"protein": "14 g", "carb": "10 g", "fat": "15 g"},
+    "Tavuk Fajita": {"protein": "35 g", "carb": "18 g", "fat": "16 g"},
+    "Izgara Köfte": {"protein": "32 g", "carb": "12 g", "fat": "28 g"},
+    "Mantar Soslu Bonfile": {"protein": "42 g", "carb": "8 g", "fat": "32 g"},
+    "Pankek": {"protein": "10 g", "carb": "45 g", "fat": "10 g"},
+    "Shakshuka (Şakşuka)": {"protein": "5 g", "carb": "26 g", "fat": "13 g"},
+    "Mercimek Çorbası": {"protein": "9 g", "carb": "25 g", "fat": "5 g"},
+    "Tavuklu Sezar Salata": {"protein": "33 g", "carb": "16 g", "fat": "18 g"},
+    "Mercimek Köftesi": {"protein": "11 g", "carb": "42 g", "fat": "7 g"},
+    "Izgara Çipura": {"protein": "36 g", "carb": "2 g", "fat": "18 g"},
+    "Falafel": {"protein": "13 g", "carb": "32 g", "fat": "14 g"},
+    "Penne Arrabbiata": {"protein": "12 g", "carb": "62 g", "fat": "9 g"},
+    "Ev Yapımı Burger": {"protein": "30 g", "carb": "45 g", "fat": "36 g"},
+    "Sebzeli Pad Thai": {"protein": "11 g", "carb": "58 g", "fat": "14 g"},
+    "Mantar Risotto": {"protein": "12 g", "carb": "60 g", "fat": "16 g"},
+    "Çıtır Tavuk Kanat": {"protein": "31 g", "carb": "24 g", "fat": "30 g"},
+    "Humus Yatağında Mantar": {"protein": "10 g", "carb": "26 g", "fat": "15 g"},
+    "Ev Yapımı Pizza": {"protein": "24 g", "carb": "65 g", "fat": "22 g"},
+    "Kinoa Salatası": {"protein": "10 g", "carb": "35 g", "fat": "9 g"},
+    "Mercimekli Vegan Burger": {"protein": "17 g", "carb": "48 g", "fat": "11 g"},
+    "Somon Izgara": {"protein": "34 g", "carb": "5 g", "fat": "24 g"},
+    "Ezogelin Çorbası": {"protein": "8 g", "carb": "29 g", "fat": "6 g"},
+    "San Sebastian Cheesecake": {"protein": "10 g", "carb": "34 g", "fat": "32 g"},
+    "Karides Güveç": {"protein": "29 g", "carb": "6 g", "fat": "19 g"},
+    "Kıymalı Tarhana Çorbası": {"protein": "14 g", "carb": "22 g", "fat": "10 g"},
+    "Magnolia (Muzlu)": {"protein": "7 g", "carb": "50 g", "fat": "13 g"},
+    "Levrek Buğulama": {"protein": "32 g", "carb": "12 g", "fat": "12 g"},
+    "Chia Tohumlu Puding": {"protein": "6 g", "carb": "20 g", "fat": "9 g"},
+    "Domates Çorbası (Közlenmiş)": {"protein": "4 g", "carb": "18 g", "fat": "6 g"},
+    "Fırın Sütlaç": {"protein": "9 g", "carb": "48 g", "fat": "8 g"},
+    "Guacamole Soslu Nachos": {"protein": "6 g", "carb": "34 g", "fat": "18 g"},
+    "Buharda Sebzeli Gyozza": {"protein": "8 g", "carb": "42 g", "fat": "7 g"},
+    "Gavurdağı Salatası": {"protein": "5 g", "carb": "16 g", "fat": "12 g"},
+    "Lazanya (Bolognese)": {"protein": "30 g", "carb": "55 g", "fat": "30 g"},
+    "Falafel Salatası": {"protein": "14 g", "carb": "30 g", "fat": "16 g"},
+    "Karidesli Linguine": {"protein": "26 g", "carb": "60 g", "fat": "10 g"},
+    "Atom (Süzme Yoğurtlu Meze)": {"protein": "10 g", "carb": "8 g", "fat": "16 g"},
+    "Tavuklu Quesadilla": {"protein": "32 g", "carb": "38 g", "fat": "22 g"},
+    "Vişneli Yaprak Sarma": {"protein": "5 g", "carb": "35 g", "fat": "9 g"},
+    "Beef Stroganoff": {"protein": "38 g", "carb": "12 g", "fat": "36 g"},
+    "Kabak Mücver": {"protein": "12 g", "carb": "18 g", "fat": "12 g"},
+    "Tom Yum Çorbası": {"protein": "18 g", "carb": "10 g", "fat": "7 g"},
+    "Paçanga Böreği": {"protein": "17 g", "carb": "35 g", "fat": "24 g"},
+    "Etli Kuru Fasulye": {"protein": "25 g", "carb": "42 g", "fat": "14 g"},
+    "Zeytinyağlı Enginar": {"protein": "4 g", "carb": "20 g", "fat": "9 g"},
+    "Ispanaklı Gül Böreği": {"protein": "13 g", "carb": "36 g", "fat": "17 g"},
+    "Ratatouille": {"protein": "5 g", "carb": "22 g", "fat": "8 g"},
+    "İçli Köfte (Haşlama)": {"protein": "22 g", "carb": "38 g", "fat": "14 g"},
+    "Karnıyarık": {"protein": "22 g", "carb": "24 g", "fat": "26 g"},
+    "İrmik Helvası": {"protein": "7 g", "carb": "58 g", "fat": "18 g"},
+    "Tavuk Tantuni": {"protein": "31 g", "carb": "34 g", "fat": "13 g"},
+    "Mantar Kokoreç": {"protein": "7 g", "carb": "14 g", "fat": "10 g"},
+    "Beluga Mercimek Salatası": {"protein": "16 g", "carb": "30 g", "fat": "7 g"},
+    "Fit Muzlu Ekmek (Banana Bread)": {"protein": "7 g", "carb": "36 g", "fat": "8 g"},
+    "Falafel Burger": {"protein": "18 g", "carb": "50 g", "fat": "15 g"},
+    "Körili Nohut Yemeği (Chana Masala)": {"protein": "15 g", "carb": "42 g", "fat": "10 g"},
+    "Avokadolu Yumurtalı Tost": {"protein": "17 g", "carb": "28 g", "fat": "20 g"},
+    "Fırınlanmış Baharatlı Karnabahar": {"protein": "6 g", "carb": "18 g", "fat": "7 g"},
+    "Piyaz (Antalya Usulü)": {"protein": "15 g", "carb": "30 g", "fat": "11 g"},
+    "Hurmalı Enerji Topları": {"protein": "3 g", "carb": "18 g", "fat": "5 g"},
+    "Basit Tavuklu Ramen": {"protein": "24 g", "carb": "55 g", "fat": "12 g"},
+    "Zeytinyağlı Bamya": {"protein": "4 g", "carb": "18 g", "fat": "8 g"},
+    "Tiramisu (Orijinal)": {"protein": "8 g", "carb": "42 g", "fat": "20 g"},
+    "Sebzeli Sushi Roll (Maki)": {"protein": "6 g", "carb": "46 g", "fat": "5 g"},
+    "Teriyaki Soslu Somon": {"protein": "35 g", "carb": "18 g", "fat": "24 g"},
+    "Kuzu Tandır": {"protein": "42 g", "carb": "4 g", "fat": "40 g"},
+    "Portakallı Ördek (Basit)": {"protein": "36 g", "carb": "16 g", "fat": "32 g"},
+    "Chia Tohumlu Çilekli Parfe": {"protein": "10 g", "carb": "24 g", "fat": "7 g"},
+    "Etli Kara Lahana Sarması": {"protein": "20 g", "carb": "28 g", "fat": "14 g"},
+    "Pavlova": {"protein": "5 g", "carb": "45 g", "fat": "12 g"},
+    "İncirli ve Cevizli Brie": {"protein": "12 g", "carb": "28 g", "fat": "18 g"},
+    "Çilekli ve Reyhanlı Limonata": {"protein": "1 g", "carb": "30 g", "fat": "0 g"},
+    "Muhammara (Acuka)": {"protein": "8 g", "carb": "22 g", "fat": "20 g"},
+    "Ispanaklı Smoothie Bowl": {"protein": "9 g", "carb": "34 g", "fat": "10 g"},
+    "Kabak Çiçeği Dolması": {"protein": "5 g", "carb": "30 g", "fat": "8 g"},
+    "Fesleğenli Mantar Sote": {"protein": "9 g", "carb": "12 g", "fat": "11 g"},
+    "Çılbır Soslu Avokado": {"protein": "16 g", "carb": "10 g", "fat": "26 g"},
+    "Orman Meyveli Ev Yapımı Dondurma": {"protein": "5 g", "carb": "28 g", "fat": "4 g"},
+    "Fırınlanmış Baharatlı Nohut": {"protein": "9 g", "carb": "27 g", "fat": "6 g"},
+    "Buzlu Matcha Latte": {"protein": "6 g", "carb": "12 g", "fat": "4 g"}
+}
+
 meals = [
     {"name":"Menemen","cat":"Kahvaltı","time":"<15 dk","tags":["Sağlıklı","Pratik"]},
     {"name":"Tavuk Fajita","cat":"Akşam","time":"15-30 dk","tags":["Tavuk","Doyurucu"]},
@@ -310,6 +393,16 @@ else:
         c1.metric("⏱️ Süre", recipe["time"])
         c2.metric("🔥 Kalori", recipe["cal"])
         c3.metric("🏷️ Kategori", best_match["cat"])
+
+        nutrition = NUTRITION.get(best_match["name"])
+        if nutrition:
+            st.markdown("#### 🧪 Besin Değeri Analizi")
+            n1, n2, n3 = st.columns(3)
+            n1.metric("💪 Protein", nutrition["protein"])
+            n2.metric("🍞 Karbonhidrat", nutrition["carb"])
+            n3.metric("🥑 Yağ", nutrition["fat"])
+            
+            st.caption("Besin değerleri yaklaşık olarak verilmiştir; kullanılan malzeme miktarına göre değişebilir.")
         
         st.markdown("---")
         
