@@ -9,7 +9,7 @@ st.set_page_config(page_title="🍽️ Şefin Mutfağı | Akıllı Yemek Öneric
 # CSS & BACKGROUND
 # -----------------------------
 def set_bg():
-    file_path = "bg.PNG"
+    file_path = "bg.png"
     if os.path.exists(file_path):
         with open(file_path, "rb") as f:
             data = base64.b64encode(f.read()).decode()
