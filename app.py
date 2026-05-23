@@ -226,8 +226,11 @@ questions = [
 # ================================
 # 🖥️ ARAYÜZ (UI)
 # ================================
-st.title("🍽️ Akıllı Tabak ")
-st.markdown("### _Bugün ne pişirsem? Kararı birlikte verelim._")
+st.title("🍽️ Akıllı Tabak")
+st.markdown(
+    "<p style='font-size:24px; font-weight:600; font-style:italic; text-align:center;'>Bugün ne pişirsem? Kararı birlikte verelim.</p>",
+    unsafe_allow_html=True
+)
 
 if st.session_state.step < len(questions):
     q, typ, opts = questions[st.session_state.step]
