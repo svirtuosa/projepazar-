@@ -221,7 +221,6 @@ questions = [
     ("Zamanın ne kadar?", "radio", ["<15 dk", "15-30 dk", "30+ dk"]),
     ("Beslenme tercihin?", "radio", ["Et ağırlıklı", "Tavuk", "Sebze ağırlıklı", "Vegan", "Düşük kalorili"]),
     ("Nasıl bir yemek?", "radio", ["Hafif", "Doyurucu", "Sağlıklı", "Kaçamak"]),
-    ("Alerjen veya tüketmek istemediğin içerik var mı?", "radio", ["Yok", "Süt ürünleri", "Gluten", "Kuruyemiş", "Yumurta", "Deniz ürünleri"]),
 ]
 
 # -----------------------------
@@ -253,11 +252,6 @@ def detect_allergens(recipe):
             found.append(allergen)
     return found
 
-
-def has_selected_allergen(recipe, selected_allergen):
-    if selected_allergen == "Yok":
-        return False
-    return selected_allergen in detect_allergens(recipe)
 
 
 def estimate_nutrition(recipe, meal):
@@ -319,23 +313,20 @@ def explain_choice(meal_name, selected_ogun, selected_sure, selected_beslenme, s
     )
 
 
-def build_ranked_meals(selected_ogun, selected_sure, selected_beslenme, selected_tarz, selected_allergen):
+def build_ranked_meals(selected_ogun, selected_sure, selected_beslenme, selected_tarz):
     ranked = []
     for meal in meals:
         recipe = NEW_RECIPES.get(meal["name"])
         if not recipe:
             continue
 
-        # Kesin eleme: zaman, öğün, beslenme ve seçilen alerjen
+        # Kesin eleme: zaman, öğün ve beslenme tercihi
         if not time_is_compatible(selected_sure, meal["time"]):
             continue
         if meal["cat"] != selected_ogun:
             continue
         if selected_beslenme not in meal["tags"]:
             continue
-        if has_selected_allergen(recipe, selected_allergen):
-            continue
-
         score_parts = score_meal(meal, selected_ogun, selected_sure, selected_beslenme, selected_tarz)
         ranked.append((score_parts["Toplam"], meal, score_parts))
 
@@ -343,7 +334,7 @@ def build_ranked_meals(selected_ogun, selected_sure, selected_beslenme, selected
     return ranked
 
 
-def build_fallback_meals(selected_ogun, selected_sure, selected_allergen):
+def build_fallback_meals(selected_ogun, selected_sure):
     fallback = []
     for meal in meals:
         recipe = NEW_RECIPES.get(meal["name"])
@@ -352,8 +343,6 @@ def build_fallback_meals(selected_ogun, selected_sure, selected_allergen):
         if meal["cat"] != selected_ogun:
             continue
         if not time_is_compatible(selected_sure, meal["time"]):
-            continue
-        if has_selected_allergen(recipe, selected_allergen):
             continue
         fallback.append(meal)
     return fallback
@@ -397,22 +386,21 @@ else:
     secilen_sure = ans.get("Zamanın ne kadar?")
     secilen_beslenme = ans.get("Beslenme tercihin?")
     secilen_tarz = ans.get("Nasıl bir yemek?")
-    secilen_alerjen = ans.get("Alerjen veya tüketmek istemediğin içerik var mı?", "Yok")
 
     ranked_meals = build_ranked_meals(
-        secilen_ogun, secilen_sure, secilen_beslenme, secilen_tarz, secilen_alerjen
+        secilen_ogun, secilen_sure, secilen_beslenme, secilen_tarz
     )
 
     used_fallback = False
     if not ranked_meals:
         used_fallback = True
-        fallback_meals = build_fallback_meals(secilen_ogun, secilen_sure, secilen_alerjen)
+        fallback_meals = build_fallback_meals(secilen_ogun, secilen_sure)
         best_match = fallback_meals[0] if fallback_meals else meals[0]
         score_parts = score_meal(best_match, secilen_ogun, secilen_sure, secilen_beslenme, secilen_tarz)
         alternatives = fallback_meals[1:3] if len(fallback_meals) > 1 else []
         st.warning(
             "Seçimleriniz birbiriyle tam uyumlu olmayabilir. "
-            "Bu nedenle sistem, alerjen tercihinizi de dikkate alarak en yakın uygun alternatifi seçti."
+            "Bu nedenle sistem, seçtiğiniz öğün ve zaman aralığına en yakın uygun alternatifi seçti."
         )
     else:
         best_score, best_match, score_parts = ranked_meals[0]
@@ -461,26 +449,18 @@ else:
         n4.metric("Yağ", nutrition["Yağ"])
         st.caption("Besin değerleri yaklaşık olarak hesaplanmıştır; kullanılan malzeme miktarlarına göre değişebilir.")
 
-        # Alerjen bilgisi
-        st.markdown("#### ⚠️ Alerjen Bilgisi")
-        if secilen_alerjen == "Yok":
-            if detected_allergens:
-                st.warning(
-                    "Bu tarif şu olası alerjenleri içerebilir: "
-                    + ", ".join(detected_allergens)
-                    + ". Tarif uygulanmadan önce malzeme listesini kontrol ediniz."
-                )
-            else:
-                st.success("Bu tarifte yaygın alerjen tespit edilmedi. Yine de malzeme listesini kontrol ediniz.")
+        # Genel alerjen uyarısı
+        st.markdown("#### ⚠️ Alerjen Uyarısı")
+        if detected_allergens:
+            st.warning(
+                "Bu tarif şu olası alerjenleri içerebilir: "
+                + ", ".join(detected_allergens)
+                + ". Tarif uygulanmadan önce malzeme listesi mutlaka kontrol edilmelidir."
+            )
         else:
-            if secilen_alerjen in detected_allergens:
-                st.error(
-                    f"Uyarı: Bu tarif {secilen_alerjen.lower()} içerebilir. Daha güvenli bir alternatif seçmeniz önerilir."
-                )
-            else:
-                st.success(
-                    f"Seçtiğiniz '{secilen_alerjen}' bilgisi dikkate alındı. Bu tarifte bu alerjen tespit edilmedi."
-                )
+            st.info(
+                "Bu tarifte yaygın alerjen tespit edilmedi. Yine de tarif uygulanmadan önce malzeme listesi kontrol edilmelidir."
+            )
 
         # Alternatif öneriler
         st.markdown("#### 🔁 Alternatif Öneriler")
