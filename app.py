@@ -383,10 +383,6 @@ else:
         st.markdown("---")
         st.success(f"### ✨ Senin İçin Seçimim: {best_match['name']}")
         st.caption(f"_{recipe['desc']}_")
-        st.info(
-    f"🍽️ **Neden bu yemek önerildi?**\n\n"
-    f"Bu yemek; seçtiğiniz öğün, süre ve beslenme tercihiyle uyumlu olduğu için önerildi. "
-    f"Ayrıca seçtiğiniz yemek türüyle eşleşen tarifler arasında en uygun seçenek olarak belirlendi."
 )
         
         c1, c2, c3 = st.columns(3)
