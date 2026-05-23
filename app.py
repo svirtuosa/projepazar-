@@ -383,7 +383,6 @@ else:
         st.markdown("---")
         st.success(f"### ✨ Senin İçin Seçimim: {best_match['name']}")
         st.caption(f"_{recipe['desc']}_")
-)
         
         c1, c2, c3 = st.columns(3)
         c1.metric("⏱️ Süre", recipe["time"])
